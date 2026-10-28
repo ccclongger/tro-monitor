@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>近期美国 TRO 案件维权分析与风险规避指南 · IP RISK MONITOR / OCTOBER 2026</title>
+<style>
+:root{
+  --navy:#0f2b52; --blue:#1c4e80; --blue-l:#eaf2fb; --red:#c0392b; --red-l:#fdecea;
+  --green:#1e7d5a; --green-l:#e8f7f0; --amber:#b06f00; --amber-l:#fdf4e3;
+  --gray:#5b6b7d; --line:#e2e8f0; --bg:#f5f7fa; --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:#1f2d3d;line-height:1.7;font-size:15px}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* ============ 顶部标题 ============ */
+header{background:linear-gradient(135deg,#0f2b52,#1c4e80 60%,#2a6cb6);color:#fff;padding:44px 0 36px;margin-bottom:28px}
+header .wrap{padding-bottom:0}
+.kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:.85;margin-bottom:10px}
+h1{font-size:30px;font-weight:800;line-height:1.3;margin-bottom:14px}
+.sub{font-size:14px;opacity:.92;max-width:820px}
+.tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:5px 13px;border-radius:20px;font-size:13px;backdrop-filter:blur(2px)}
+.notice{background:var(--amber-l);border:1px solid #f0d9a8;border-left:4px solid var(--amber);border-radius:8px;padding:14px 18px;margin-top:26px;font-size:13.5px;color:#6b4a12}
+.notice b{color:var(--amber)}
+
+/* ============ 目录导览 ============ */
+section{margin-bottom:40px}
+.sec-title{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.sec-title::before{content:"";width:5px;height:22px;background:var(--blue);border-radius:3px}
+.sec-desc{color:var(--gray);font-size:13.5px;margin-bottom:18px;margin-left:15px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 20px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(15,43,82,.12);border-color:#b9d0ea}
+.card .num{position:absolute;right:-6px;top:-6px;font-size:42px;font-weight:800;color:#eef3f9;z-index:0}
+.card .inner{position:relative;z-index:1}
+.card h3{font-size:16px;color:var(--navy);margin-bottom:4px}
+.card .prod{font-size:14px;color:#33475b;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:3px 9px;border-radius:14px;background:var(--blue-l);color:var(--blue);font-weight:600}
+.chip.warn{background:var(--amber-l);color:var(--amber)}
+.chip.ok{background:var(--green-l);color:var(--green)}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-bottom:8px}
+.badge.warn{background:var(--amber-l);color:var(--amber);border:1px dashed var(--amber)}
+.badge.ok{background:var(--green-l);color:var(--green);border:1px solid #a9dcc6}
+
+/* ============ 案件详情 ============ */
+.case{border:1px solid var(--line);border-radius:14px;padding:28px 30px;background:var(--white);margin-bottom:32px;scroll-margin-top:20px}
+.case-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--blue);padding-bottom:12px;margin-bottom:22px}
+.case-head .idx{font-size:13px;font-weight:700;color:#fff;background:var(--blue);border-radius:6px;padding:3px 10px}
+.case-head h2{font-size:22px;color:var(--navy)}
+.case-head .date{margin-left:auto;font-size:13px;color:var(--gray);background:#f1f5f9;padding:3px 10px;border-radius:6px}
+
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px}
+.meta .item{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.meta .item .k{font-size:11.5px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.meta .item .v{font-size:14px;font-weight:600;color:#1f2d3d}
+
+h4{font-size:15.5px;color:var(--navy);margin:22px 0 12px;padding-left:11px;border-left:4px solid var(--blue)}
+h4:first-of-type{margin-top:0}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:8px}
+th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-weight:600}
+td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fafcfe}
+.mono{font-family:"Consolas",monospace;font-size:12.5px;color:var(--blue);font-weight:600}
+.src{font-size:12.5px;color:var(--gray);background:#f8fafc;border:1px dashed var(--line);border-radius:6px;padding:8px 12px;margin-top:8px}
+
+/* 要点框 */
+.box{border-radius:10px;padding:14px 18px;margin:14px 0;font-size:14px}
+.box .bt{font-weight:800;font-size:13px;margin-bottom:6px;display:block}
+.box.risk{background:var(--red-l);border:1px solid #f2c4be}
+.box.risk .bt{color:var(--red)}
+.box.tip{background:var(--green-l);border:1px solid #b6e2cd}
+.box.tip .bt{color:var(--green)}
+.box.warn{background:var(--amber-l);border:1px solid #f0d9a8}
+.box.warn .bt{color:var(--amber)}
+.box ul{margin-left:18px}
+.box li{margin-bottom:5px}
+.box li:last-child{margin-bottom:0}
+
+/* ============ 图片区 ============ */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.fig{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fafcfe;transition:.2s}
+.fig:hover{box-shadow:0 6px 18px rgba(15,43,82,.12)}
+.fig .ph{width:100%;height:auto;display:block;cursor:zoom-in;background:#eef3f8}
+.fig .cap{padding:9px 12px;font-size:12.5px;color:#33475b;line-height:1.6}
+.fig .cap b{color:var(--navy);display:block;margin-bottom:3px}
+.placeholder{border:2px dashed #cfdae6;border-radius:10px;background:#fafcfe;padding:26px 20px;text-align:center;color:var(--gray);font-size:13.5px}
+.placeholder .ico{font-size:26px;margin-bottom:8px;display:block}
+.placeholder b{color:var(--amber);display:block;margin-bottom:4px}
+
+/* ============ 灯箱 ============ */
+#lightbox{position:fixed;inset:0;background:rgba(8,18,32,.94);display:none;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out}
+#lightbox.open{display:flex}
+#lightbox img{max-width:92vw;max-height:86vh;object-fit:contain;cursor:zoom-in;transition:transform .08s ease-out;transform-origin:center center}
+#lb-bar{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:14px;font-size:13px;z-index:10000}
+#lb-bar .sp{flex:1}
+#lb-bar button{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 13px;border-radius:6px;cursor:pointer;font-size:12.5px}
+#lb-bar button:hover{background:rgba(255,255,255,.28)}
+#lb-close{font-size:22px;line-height:1}
+
+footer{text-align:center;color:var(--gray);font-size:12.5px;padding:30px 0;border-top:1px solid var(--line);margin-top:20px}
+@media(max-width:640px){
+  h1{font-size:22px}
+  .case{padding:20px 16px}
+  .case-head .date{margin-left:0;width:100%}
+}
+@media print{
+  header{background:var(--navy)!important;-webkit-print-color-adjust:exact}
+  .gallery{glear:both}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">IP RISK MONITOR · OCTOBER 2026</div>
+    <h1>近期美国 TRO 案件维权分析与风险规避指南</h1>
+    <div class="sub">覆盖 2026 年 10 月 22 日至 27 日共 5 起美国联邦法院临时限制令（TRO）案件，逐案梳理原告、律所、涉案商标/版权权利明细与可执行的排查动作。案件信息以法院案卷原文为准，本指南仅作风险预警参考。</div>
+    <div class="tags">
+      <span class="tag">5 起案件</span>
+      <span class="tag">商标 · 版权</span>
+      <span class="tag">3 家原告主体</span>
+      <span class="tag">4 家代理律所</span>
+      <span class="tag">点击图片可放大 · 滚轮缩放</span>
+    </div>
+    <div class="notice">
+      <b>阅读说明：</b>案号标注 ✅ 的已核实法院案卷原文（含 Document 编号与立案日）；标注 ⚠️ 的暂未在公开来源查到对应案卷，需以法院案卷原文复核后再对外发布。附图待补的案子，文字权利明细已先行给出，收到原图后可直接替换 <code>img/</code> 目录下对应文件。本指南不编造任何来源、律所全称与联系方式。
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ==================== 目录导览 ==================== -->
+<section id="toc">
+  <div class="sec-title">案件总览</div>
+  <div class="sec-desc">点击任意卡片跳转至对应案件详情；标签颜色：<span class="chip ok">已核实案卷</span> <span class="chip warn">案号待核</span> <span class="chip">商标</span> <span class="chip">商标+版权</span></div>
+  <div class="grid">
+
+    <div class="card" onclick="go('c4')">
+      <div class="num">04</div>
+      <div class="inner">
+        <span class="badge ok">✅ 案卷已核实</span>
+        <h3>SPIDER-MAN 蜘蛛侠</h3>
+        <div class="prod">Marvel Characters, Inc. · TME · 商标</div>
+        <div class="chips"><span class="chip">SPIDER-MAN</span><span class="chip">SPIDEY</span><span class="chip">MARVEL</span><span class="chip">图形商标</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="go('c5')">
+      <div class="num">05</div>
+      <div class="inner">
+        <span class="badge warn">⚠️ 案号待核</span>
+        <h3>Bluey 布鲁伊</h3>
+        <div class="prod">BBC Studios · GBC · 商标</div>
+        <div class="chips"><span class="chip">BLUEY 字样</span><span class="chip">蓝赫勒犬形象</span><span class="chip">多类目</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="go('c1')">
+      <div class="num">01</div>
+      <div class="inner">
+        <span class="badge warn">⚠️ 案号待核</span>
+        <h3>Monster High 精灵高中</h3>
+        <div class="prod">Mattel, Inc. · GBC · 商标+版权</div>
+        <div class="chips"><span class="chip">角色名商标</span><span class="chip">角色形象版权</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="go('c2')">
+      <div class="num">02</div>
+      <div class="inner">
+        <span class="badge warn">⚠️ 案号待核</span>
+        <h3>The Little Prince 小王子</h3>
+        <div class="prod">SOPMAD · HSP · 商标</div>
+        <div class="chips"><span class="chip">文字商标</span><span class="chip">人物形象图形</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="go('c3')">
+      <div class="num">03</div>
+      <div class="inner">
+        <span class="badge warn">⚠️ 案号待核</span>
+        <h3>Emoji 表情包</h3>
+        <div class="prod">emoji company GmbH · HUCKE · 商标</div>
+        <div class="chips"><span class="chip">EMOJI 词</span><span class="chip">黄脸图形</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== 案件 4 ==================== -->
+<section class="case" id="c4">
+  <div class="case-head">
+    <span class="idx">CASE 04</span>
+    <h2>SPIDER-MAN 蜘蛛侠</h2>
+    <span class="date">2026-10-23 · 2:26-cv-00517</span>
+  </div>
+  <div class="meta">
+    <div class="item"><div class="k">原告</div><div class="v">Marvel Characters, Inc.<br><span style="font-weight:400;font-size:12.5px;color:#5b6b7d">迪士尼子公司</span></div></div>
+    <div class="item"><div class="k">代理律所</div><div class="v">TME Law, P.C.<br><span style="font-weight:400;font-size:12.5px;color:#5b6b7d">来源待补</span></div></div>
+    <div class="item"><div class="k">法院</div><div class="v">华盛顿西区（W.D. Wash.）</div></div>
+    <div class="item"><div class="k">案号</div><div class="v">2:26-cv-00517</div></div>
+    <div class="item"><div class="k">立案日</div><div class="v">2026-01-13</div></div>
+    <div class="item"><div class="k">维权类型</div><div class="v">商标（+ 版权图形）</div></div>
+    <div class="item"><div class="k">案卷状态</div><div class="v" style="color:var(--green)">✅ 已核实</div></div>
+  </div>
+
+  <h4>案卷来源</h4>
+  <div class="src">Case <b>2:26-cv-00517</b> · Marvel Characters, Inc. v. The Partnerships and Unincorporated Associations Identified on Schedule A · Document 1（52 页起诉状 + 26 个 Exhibit，含 TRO 动议）· Filed 01/13/2026 · 代理律师 Ian F. Tarty、Kassandra A. Palma · 被告名单公开约 127 家网店（AliExpress / eBay / Temu 等）。</div>
+
+  <h4>涉案权利明细</h4>
+  <table>
+    <thead><tr><th>商标</th><th>注册号</th><th>主要类目</th></tr></thead>
+    <tbody>
+      <tr><td>SPIDER-MAN</td><td class="mono">1,231,920</td><td>第18类 包袋</td></tr>
+      <tr><td>SPIDER-MAN</td><td class="mono">1,251,774</td><td>第28类 玩具、游戏</td></tr>
+      <tr><td>SPIDER-MAN</td><td class="mono">1,256,062</td><td>第16类 海报、故事书、文具</td></tr>
+      <tr><td>SPIDER-MAN</td><td class="mono">1,267,236</td><td>第25类 服装、鞋袜</td></tr>
+      <tr><td>SPIDER-MAN</td><td class="mono">1,339,415</td><td>第9/41类 影视、游戏、广告</td></tr>
+      <tr><td>SPIDER-MAN</td><td class="mono">3,553,440</td><td>第9/25/28类 服装、头盔、游戏程序</td></tr>
+      <tr><td>SPIDEY AND HIS AMAZING FRIENDS</td><td class="mono">6,680,453</td><td>第25类 服装、鞋类（2022-03-22）</td></tr>
+      <tr><td>SPIDEY AND HIS AMAZING FRIENDS</td><td class="mono">6,747,728</td><td>第28类 玩具、人偶、拼图（2022-05-31）</td></tr>
+      <tr><td>SPIDEY AND HIS AMAZING FRIENDS</td><td class="mono">6,895,972</td><td>第9类 数字媒体、可下载音视频（2022-11-08）</td></tr>
+      <tr><td>SPIDEY AND HIS AMAZING FRIENDS</td><td class="mono">7,012,958</td><td>第16类 漫画书、涂色书、书签（2023-03-28）</td></tr>
+      <tr><td>MARVEL</td><td class="mono">3,116,241</td><td>第25类 T恤、外套、鞋帽（2006-07-18）</td></tr>
+      <tr><td>MARVEL</td><td class="mono">3,602,027</td><td>第9类 预录DVD、游戏软件（2009-04-07）</td></tr>
+      <tr><td>MARVEL</td><td class="mono">4,074,087</td><td>第9/16类 游戏软件、毛巾床品（2011-12-20）</td></tr>
+      <tr><td>MARVEL</td><td class="mono">4,083,047</td><td>第21类 瓶、杯、碗碟（2012-01-10）</td></tr>
+      <tr><td>MARVEL</td><td class="mono">4,173,956</td><td>第16类 贴纸册、日历、海报（2012-07-17）</td></tr>
+      <tr><td>MARVEL</td><td class="mono">5,800,483</td><td>第32类 饮用水、果汁（2019-07-09）</td></tr>
+      <tr><td>图形商标（圆形蛛网眼罩面具）</td><td class="mono">5,397,240 / 5242 / 5243 / 5,454,202</td><td>第25/28/16类 服装、玩具、文具（2018-02-06 / 2018-04-24）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box risk">
+    <span class="bt">⚠️ 核心风险点</span>
+    <ul>
+      <li><b>三条并行权利线</b>：SPIDER-MAN 主视觉（写实3D红蓝战衣）、SPIDEY AND HIS AMAZING FRIENDS（Q版动画）、MARVEL 文字商标同时维权——<b>只改风格不改元素，照样侵权</b>。</li>
+      <li>Q版三小只+浅蓝蛛网星星背景单独构成一条权利线（2022 年集中注册），是近年新增的高风险点。</li>
+      <li>圆形蛛网眼罩面具图形商标横跨 25/28/16 类，印花、贴纸、玩具上出现类似构图即踩雷。</li>
+      <li>MARVEL 文字覆盖到第 32 类饮料，<b>不止服装玩具</b>，食品、日用品同样在射程内。</li>
+    </ul>
+  </div>
+
+  <div class="box tip">
+    <span class="bt">✅ 排查建议</span>
+    <ul>
+      <li>关键词排查必须<b>同时覆盖中英文与变体</b>：蜘蛛侠 / SPIDER-MAN / SPIDEY / SPIDEY AND HIS AMAZING FRIENDS / MARVEL / 漫威。</li>
+      <li>图片排查<b>分两套标准</b>：写实红蓝紧身战衣 + Q版三小只，两套都需独立比对。</li>
+      <li>重点类目：9 / 16 / 21 / 25 / 28 / 32，对应服装、鞋帽、玩具、拼图、毛绒、贴纸、杯具、饮用水等。</li>
+    </ul>
+  </div>
+
+  <h4>案卷附图（法院 Document 1 Exhibit，可点击放大 · 滚轮缩放）</h4>
+  <div class="gallery">
+    <div class="fig"><img class="ph" src="img/case4_court1.png" alt="法院文件第5页 蜘蛛侠形象对比图" onclick="zoom(this)"><div class="cap"><b>图4-1 · 法院 Document 1 Exhibit（第5页）</b>左：Spider-Man 写实3D红蓝战衣形象；右：Spidey and his Amazing Friends Q版三小只。双线对比举证。</div></div>
+    <div class="fig"><img class="ph" src="img/case4_spider1.png" alt="SPIDER-MAN 商标注册信息" onclick="zoom(this)"><div class="cap"><b>图4-2 · SPIDER-MAN 注册信息</b>注册号 1,231,920 / 1,251,774 / 1,256,062，1983 年注册，覆盖包袋、玩具、文具类。</div></div>
+    <div class="fig"><img class="ph" src="img/case4_spider2.png" alt="SPIDER-MAN 注册信息续" onclick="zoom(this)"><div class="cap"><b>图4-3 · SPIDER-MAN 注册信息（续）</b>注册号 1,267,236 / 1,339,415 / 3,553,440，1984–2008 年，覆盖服装鞋袜、影视游戏。</div></div>
+    <div class="fig"><img class="ph" src="img/case4_spidey1.png" alt="SPIDEY AND HIS AMAZING FRIENDS 注册信息" onclick="zoom(this)"><div class="cap"><b>图4-4 · SPIDEY AND HIS AMAZING FRIENDS</b>注册号 6,680,453 / 6,747,728 / 6,895,972，2022 年注册，第25/28/9类。</div></div>
+    <div class="fig"><img class="ph" src="img/case4_marvel1.png" alt="SPIDEY AND HIS AMAZING FRIENDS 注册信息续" onclick="zoom(this)"><div class="cap"><b>图4-5 · SPIDEY AND HIS AMAZING FRIENDS（续）</b>注册号 7,012,958，2023-03-28，第16类漫画书、涂色书、书签。</div></div>
+    <div class="fig"><img class="ph" src="img/case4_marvel2.png" alt="图形商标 圆形蛛网面具" onclick="zoom(this)"><div class="cap"><b>图4-6 · 图形商标（圆形蛛网眼罩面具）</b>注册号 5,397,240 等，2018-02-06，覆盖文具、床品、玩具。</div></div>
+    <div class="fig"><img class="ph" src="img/case4_marvel3.png" alt="图形商标续" onclick="zoom(this)"><div class="cap"><b>图4-7 · 图形商标（续）</b>注册号 5,397,242 / 5,454,202，背包、行李箱、陶瓷胸像类。</div></div>
+    <div class="fig"><img class="ph" src="img/case4_court1.png" alt="MARVEL 文字商标" onclick="zoom(this)"><div class="cap"><b>图4-8 · MARVEL 文字商标</b>注册号 3,116,241 / 3,602,027，1969–2009，第25/9类。</div></div>
+  </div>
+  <div class="placeholder" style="margin-top:14px">
+    <span class="ico">🖼️</span>
+    <b>附图待补</b>
+    图4-9、4-10（MARVEL 文字商标剩余注册信息）原图待补充。收到后放入 <code>img/</code> 目录并对应替换本处 img src 即可。
+  </div>
+</section>
+
+<!-- ==================== 案件 5 ==================== -->
+<section class="case" id="c5">
+  <div class="case-head">
+    <span class="idx">CASE 05</span>
+    <h2>Bluey 布鲁伊</h2>
+    <span class="date">2026-10-22 · 2026-cv-13018</span>
+  </div>
+  <div class="meta">
+    <div class="item"><div class="k">原告（维权主体）</div><div class="v">BBC Studios Distribution Ltd</div></div>
+    <div class="item"><div class="k">商标注册人</div><div class="v">Ludo Studio Pty Ltd<br><span style="font-weight:400;font-size:12.5px;color:#5b6b7d">澳大利亚 Queensland</span></div></div>
+    <div class="item"><div class="k">代理律所</div><div class="v">GBC（Greer, Burns & Crain, Ltd.）</div></div>
+    <div class="item"><div class="k">法院</div><div class="v">伊利诺伊州北区（N.D. Ill.）</div></div>
+    <div class="item"><div class="k">案号</div><div class="v" style="color:var(--amber)">2026-cv-13018 ⚠️ 待核</div></div>
+    <div class="item"><div class="k">维权类型</div><div class="v">商标（+ 版权图形）</div></div>
+    <div class="item"><div class="k">案卷状态</div><div class="v" style="color:var(--amber)">⚠️ 案号待二次确认</div></div>
+  </div>
+
+  <h4>案卷来源</h4>
+  <div class="src">案号 2026-cv-13018 暂未在公开来源查到对应案卷，需以法院案卷原文复核。律所：GBC（gbc.law，芝加哥，1994 年成立，惯用购买取证）。</div>
+
+  <h4>涉案权利明细</h4>
+  <table>
+    <thead><tr><th>商标</th><th>形态</th><th>主要类目</th></tr></thead>
+    <tbody>
+      <tr><td>BLUEY</td><td>艺术体 BLUEY 字样</td><td>第28类 玩具</td></tr>
+      <tr><td>BLUEY</td><td>卡通蓝赫勒犬形象</td><td>第25类 服装</td></tr>
+      <tr><td>BLUEY</td><td>大写印刷体 BLUEY</td><td>第9类 电子产品</td></tr>
+      <tr><td>BLUEY</td><td>艺术体字样</td><td>第16类 纸品、印刷品</td></tr>
+      <tr><td>BLUEY</td><td>卡通形象</td><td>第30类 酸奶等食品</td></tr>
+    </tbody>
+  </table>
+  <div class="src">注册人均为 Ludo Studio Pty Ltd（USPTO 商标注册证书）。具体注册号以收到证书原图后逐条补录。</div>
+
+  <div class="box risk">
+    <span class="bt">⚠️ 两个易踩点</span>
+    <ul>
+      <li><b>原告与注册人分离</b>：商标注册人是澳洲 Ludo Studio，但<b>维权主体是 BBC Studios Distribution Ltd</b>（持有全球发行与衍生商品授权）。只查 Ludo Studio 会查不到案子，必须查 BBC Studios。</li>
+      <li><b>BLUEY 为多重形态商标</b>：艺术体字样、卡通形象、大写印刷体分开注册。<b>只改字体不改图案，或只改图案不改词，都躲不掉。</b></li>
+    </ul>
+  </div>
+
+  <div class="box tip">
+    <span class="bt">✅ 排查建议</span>
+    <ul>
+      <li>关键词：Bluey / 布鲁伊 / 布鲁 / Bingo（关联角色），同时排查原告 BBC Studios 全库。</li>
+      <li>图像：蓝色澳洲牧牛犬卡通形象（含剪影、Q版、头像化）均高危，<b>连色系+犬种+扁平画风的组合</b>也要排查。</li>
+      <li>类目重点：9 / 16 / 25 / 28 / 30，覆盖电子产品、纸品、服装、玩具、酸奶食品。</li>
+    </ul>
+  </div>
+
+  <h4>案卷附图（USPTO 商标注册证书，可点击放大 · 滚轮缩放）</h4>
+  <div class="gallery">
+    <div class="fig"><img class="ph" src="img/case5_bluey_cert.png" alt="USPTO 商标注册证书 BLUEY" onclick="zoom(this)"><div class="cap"><b>图5-1 · USPTO 商标注册证书（BLUEY）</b>注册人为 Ludo Studio Pty Ltd，含 BLUEY 艺术字、卡通蓝赫勒犬形象等标识，覆盖玩具、服装、电子产品、纺织品、酸奶等类目。</div></div>
+  </div>
+  <div class="placeholder" style="margin-top:14px">
+    <span class="ico">🖼️</span>
+    <b>附图待补</b>
+    图5 共 4 份证书（艺术字 BLUEY / 卡通形象 / 大写印刷体 / 第30类食品），需收到证书原图后按注册号、日期、类目逐份拆分展示。
+  </div>
+</section>
+
+<!-- ==================== 案件 1 ==================== -->
+<section class="case" id="c1">
+  <div class="case-head">
+    <span class="idx">CASE 01</span>
+    <h2>Monster High 精灵高中</h2>
+    <span class="date">2026-10-26 · 2026-cv-13156</span>
+  </div>
+  <div class="meta">
+    <div class="item"><div class="k">原告</div><div class="v">Mattel, Inc.</div></div>
+    <div class="item"><div class="k">代理律所</div><div class="v">GBC（Greer, Burns & Crain, Ltd.）</div></div>
+    <div class="item"><div class="k">案号</div><div class="v" style="color:var(--amber)">2026-cv-13156 ⚠️ 待核</div></div>
+    <div class="item"><div class="k">维权类型</div><div class="v">商标 + 版权</div></div>
+    <div class="item"><div class="k">同系列参照</div><div class="v">1:26-cv-03853<br><span style="font-weight:400;font-size:12.5px;color:#5b6b7d">2026-04-07 立案</span></div></div>
+    <div class="item"><div class="k">案卷状态</div><div class="v" style="color:var(--amber)">⚠️ 案号待二次确认</div></div>
+  </div>
+
+  <h4>案卷来源</h4>
+  <div class="src">案号 2026-cv-13156 暂未在公开来源查到对应案卷。同系列 Monster High 案件可参照 <b>1:26-cv-03853</b>（2026-04-07 立案，Mattel / GBC，商标+版权，维权类型与本系列一致）。公开渠道可核实的案号序列包括 3853、3857、3880、3888、3890、3905、3914 等。</div>
+
+  <h4>涉案权利明细</h4>
+  <table>
+    <thead><tr><th>商标</th><th>注册号</th><th>主要类目</th></tr></thead>
+    <tbody>
+      <tr><td>MONSTER HIGH</td><td class="mono">3,828,721</td><td>第28类 玩具、娃娃</td></tr>
+      <tr><td>MONSTER HIGH</td><td class="mono">4,026,560</td><td>第16类 纸品、文具</td></tr>
+      <tr><td>MONSTER HIGH</td><td class="mono">4,298,505</td><td>第25类 服装</td></tr>
+      <tr><td>ABBEY BOMINABLE</td><td class="mono">7,237,918</td><td>第28类</td></tr>
+      <tr><td>CLAWDEEN WOLF</td><td class="mono">3,922,002 / 6,804,801</td><td>第28类</td></tr>
+      <tr><td>CLEO DE NILE</td><td class="mono">7,049,542</td><td>第28类</td></tr>
+      <tr><td>DEUCE GORGON</td><td class="mono">7,049,543</td><td>第28类</td></tr>
+      <tr><td>DRACULAURA</td><td class="mono">3,803,936 / 3,895,421</td><td>第28类</td></tr>
+      <tr><td>FRANKIE STEIN</td><td class="mono">6,783,249</td><td>第28类</td></tr>
+      <tr><td>GHOULIA YELPS</td><td class="mono">7,026,834</td><td>第28类</td></tr>
+      <tr><td>LAGOONA BLUE</td><td class="mono">6,822,015</td><td>第28类</td></tr>
+      <tr><td>NEFERA DE NILE</td><td class="mono">7,780,252</td><td>第28类</td></tr>
+      <tr><td>SPECTRA VONDERGEIST</td><td class="mono">7,524,310</td><td>第28类</td></tr>
+      <tr><td>TWYLA</td><td class="mono">4,542,276</td><td>第28类</td></tr>
+      <tr><td>VENUS MCFLYTRAP</td><td class="mono">7,628,024</td><td>第28类</td></tr>
+      <tr><td>MONSTER HIGH 骷髅蝴蝶结图形</td><td class="mono">5,177,215</td><td>第16类</td></tr>
+    </tbody>
+  </table>
+  <div class="src">版权：PAu 3-693-966、PA 1-803-677、PA 1-871-472、PA 2-062-653 等角色形象版权。</div>
+
+  <div class="box risk">
+    <span class="bt">⚠️ 核心风险点</span>
+    <ul>
+      <li><b>商标+版权双线维权</b>：不仅角色名是独立注册商标，<b>角色形象本身另有版权</b>。两条线并行主张，抗辩空间被压缩。</li>
+      <li><b>角色名即商标</b>：Frankie Stein、Clawdeen Wolf 等十余个角色名均单独注册，<b>即便不出现 MONSTER HIGH 主标，用角色名做商品描述也踩雷</b>。</li>
+      <li>骷髅+蝴蝶结图形商标（5177215）是品牌视觉锚点，印花、吊牌、详情页 Banner 需重点排查。</li>
+      <li>类目 16/25/28 全覆盖，<b>不止娃娃玩具</b>，服装、文具、贴纸同样在射程内。</li>
+    </ul>
+  </div>
+
+  <div class="box tip">
+    <span class="bt">✅ 排查建议</span>
+    <ul>
+      <li>关键词：Monster High / 精灵高中 / 怪物高中 + 全部角色英文名（Frankie / Clawdeen / Cleo / Draculaura / Lagoona / Ghoulia / Abbey / Twyla / Spectra / Venus / Nefera / Deuce）。</li>
+      <li>图像：夸张时尚风格的怪物高中生形象（鲜艳发色、个性服饰、缝合线/獠牙/蛇发/鱼鳞等特征元素），<b>Q版、剪影、同人风格同样构成版权侵权</b>。</li>
+      <li>详情页、标题、属性词、变体名都要排查，不能只看主图。</li>
+    </ul>
+  </div>
+
+  <h4>案卷附图（可点击放大 · 滚轮缩放）</h4>
+  <div class="gallery">
+    <div class="fig"><img class="ph" src="img/case1_monster_high_tm.png" alt="MONSTER HIGH 商标注册信息表" onclick="zoom(this)"><div class="cap"><b>图1-1 · 涉案商标注册清单</b>Registration No. 与 Trademark 对应表，含 MONSTER HIGH 主标、ABBEY BOMINABLE、CLAWDEEN WOLF、CLEO DE NILE、DRACULAURA、FRANKIE STEIN、LAGOONA BLUE 等。</div></div>
+    <div class="fig"><img class="ph" src="img/case1_monster_high_chars.png" alt="Monster High 角色形象版权证据页" onclick="zoom(this)"><div class="cap"><b>图1-2 · 角色形象版权证据页</b>Frankie Stein、Clawdeen Wolf、Cleo de Nile、Spectra Vondergeist、Venus McFlytrap、Nefera de Nile、Draculaura、Lagoona Blue、Ghoulia Yelps、Abbey Bominable、Deuce Gorgon、Twyla Boogeyman 等角色立绘。</div></div>
+  </div>
+  <div class="placeholder" style="margin-top:14px">
+    <span class="ico">🖼️</span>
+    <b>附图待补</b>
+    图1-1、1-2 需收到<b>无遮挡清晰原图</b>：表头 Case / Document # / PageID 被水印压住，注册号后半段与类目说明需看清后方可逐条写入权利明细。
+  </div>
+</section>
+
+<!-- ==================== 案件 2 ==================== -->
+<section class="case" id="c2">
+  <div class="case-head">
+    <span class="idx">CASE 02</span>
+    <h2>The Little Prince 小王子</h2>
+    <span class="date">2026-10-27 · 2026-cv-13187</span>
+  </div>
+  <div class="meta">
+    <div class="item"><div class="k">原告</div><div class="v">Succession Antoine de Saint-Exupéry-Dagay<br><span style="font-weight:400;font-size:12.5px;color:#5b6b7d">SOPMAD · 圣埃克苏佩里作品与纪念协会</span></div></div>
+    <div class="item"><div class="k">代理律所</div><div class="v">HSP（Hughes Socol Piers Resnick & Dym, Ltd.）</div></div>
+    <div class="item"><div class="k">案号</div><div class="v" style="color:var(--amber)">2026-cv-13187 ⚠️ 待核</div></div>
+    <div class="item"><div class="k">维权类型</div><div class="v">商标</div></div>
+    <div class="item"><div class="k">IP 库</div><div class="v">《小王子》及作者全部作品</div></div>
+    <div class="item"><div class="k">案卷状态</div><div class="v" style="color:var(--amber)">⚠️ 案号待二次确认</div></div>
+  </div>
+
+  <h4>案卷来源</h4>
+  <div class="src">案号 2026-cv-13187 暂未在公开来源查到对应案卷。律所：HSP（芝加哥），资料源已有该律所介绍页（2025-03-18 资料）。</div>
+
+  <h4>涉案权利明细</h4>
+  <table>
+    <thead><tr><th>商标</th><th>注册号</th><th>注册日</th><th>主要类目</th></tr></thead>
+    <tbody>
+      <tr><td>Le Petit Prince（花体文字）</td><td class="mono">2,695,996</td><td>2003-03-11</td><td>主注册</td></tr>
+      <tr><td>The Little Prince（花体文字）</td><td class="mono">5,706,587</td><td>2019-03-26</td><td>第9/14/16类</td></tr>
+      <tr><td>The Little Prince</td><td class="mono">5,706,588</td><td>2019-03-26</td><td>第18/21/24类</td></tr>
+      <tr><td>The Little Prince</td><td class="mono">5,706,589</td><td>2019-03-26</td><td>第25/28类</td></tr>
+      <tr><td>The Little Prince</td><td class="mono">5,751,737</td><td>2019-05-14</td><td>第41类</td></tr>
+      <tr><td>图形商标（短发披风男孩立像）</td><td class="mono">同系列图形标</td><td>2019 年</td><td>多类</td></tr>
+      <tr><td>图形商标（围巾长斗篷持手杖）</td><td class="mono">同系列图形标</td><td>2019 年</td><td>多类</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box risk">
+    <span class="bt">⚠️ 两个易踩点</span>
+    <ul>
+      <li><b>品牌名必须双语同时排查</b>：英文 The Little Prince 与法文 Le Petit Prince 是<b>两套独立注册</b>，只屏蔽英文词会漏掉法文标题的商品。</li>
+      <li>图形商标包含<b>两个经典形象</b>（短发披风男孩、围巾长斗篷持手杖），<b>星形玫瑰、蛇吞象、狐狸、降落沙漠</b>等原著插画元素单用也属高危——这是本案最容易漏掉的一类。</li>
+    </ul>
+  </div>
+
+  <div class="box tip">
+    <span class="bt">✅ 排查建议</span>
+    <ul>
+      <li>关键词：The Little Prince / Le Petit Prince / 小王子 / 小王子与玫瑰 / Petit Prince（变体）。</li>
+      <li>图像：披风小男孩剪影、围巾斗篷手杖形象、B612 星球、星形玫瑰、蛇吞象、狐狸。<b>即便不带任何文字，纯插画构图也踩雷。</b></li>
+      <li>类目 9/14/16/18/21/24/25/28/41 全覆盖，尤其 25 类服装、28 类玩具、16 类纸品是高频踩雷区。</li>
+    </ul>
+  </div>
+
+  <h4>案卷附图（可点击放大 · 滚轮缩放）</h4>
+  <div class="gallery">
+    <div class="fig"><img class="ph" src="img/case2_little_prince_tm.png" alt="The Little Prince 商标注册信息表" onclick="zoom(this)"><div class="cap"><b>图2-1 · 涉案商标注册清单</b>商标号 2,695,996 / 5,706,587 / 5,706,588 / 5,706,589 / 5,751,737，含花体文字商标与两张卡通形象图形商标，注册类目跨 9/14/16/18/21/24/25/28/41 类。</div></div>
+  </div>
+  <div class="placeholder" style="margin-top:14px">
+    <span class="ico">🖼️</span>
+    <b>附图待补</b>
+    图2-1 需收到<b>无遮挡清晰原图</b>：水印压住部分注册号与类目字段，需看清后方可逐条写入权利明细。
+  </div>
+</section>
+
+<!-- ==================== 案件 3 ==================== -->
+<section class="case" id="c3">
+  <div class="case-head">
+    <span class="idx">CASE 03</span>
+    <h2>Emoji 表情包</h2>
+    <span class="date">2026-10-27 · 2026-cv-09386</span>
+  </div>
+  <div class="meta">
+    <div class="item"><div class="k">原告</div><div class="v">emoji company GmbH</div></div>
+    <div class="item"><div class="k">代理律所</div><div class="v">HUCKE<br><span style="font-weight:400;font-size:12.5px;color:#5b6b7d">全称/官网待补</span></div></div>
+    <div class="item"><div class="k">案号</div><div class="v" style="color:var(--amber)">2026-cv-09386 ⚠️ 待核</div></div>
+    <div class="item"><div class="k">维权类型</div><div class="v">商标</div></div>
+    <div class="item"><div class="k">权利人性质</div><div class="v">德国 IP 运营公司</div></div>
+    <div class="item"><div class="k">案卷状态</div><div class="v" style="color:var(--amber)">⚠️ 案号待二次确认</div></div>
+  </div>
+
+  <h4>案卷来源</h4>
+  <div class="src">案号 2026-cv-09386 暂未在公开来源查到对应案卷，需以法院案卷原文复核。律所 HUCKE 全称、地址、官网待补充（本指南未编造）。</div>
+
+  <h4>涉案权利明细</h4>
+  <table>
+    <thead><tr><th>商标</th><th>注册号（部分）</th><th>主要类目</th></tr></thead>
+    <tbody>
+      <tr><td>EMOJI（文字）</td><td class="mono">4,595,110</td><td>第9/16/25/28/41类</td></tr>
+      <tr><td>EMOJI（文字）</td><td class="mono">4,868,832</td><td>第9/16/25/28/41类</td></tr>
+      <tr><td>EMOJI 及图形</td><td class="mono">系列注册</td><td>多类</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box risk">
+    <span class="bt">⚠️ 本案最易被低估</span>
+    <ul>
+      <li><b>emoji company GmbH ≠ Unicode / Apple / Google 的 emoji。</b>Emoji Company 是德国 IP 运营公司，<b>不拥有 Unicode emoji 的版权</b>——Unicode 的 emoji 字形设计是各家自己做的，公共领域的 😀 这类符号本身<b>不能被任何一家公司垄断</b>。</li>
+      <li>但它确实在<b>第 9 / 16 / 25 / 28 / 41</b> 等类持有大量 EMOJI 文字及图形商标。主诉逻辑是：把「Emoji」这个词或黄脸表情图样<b>当作品牌、商品名称或品类描述</b>用在商品标题、包装、详情页上，构成<b>商标性使用</b>。</li>
+      <li>常见踩雷情形：标题堆「emoji」关键词引流、把黄脸表情印在手机壳 / T恤 / 贴纸 / 毛绒玩具上并标注「Emoji」字样。<b>判断标准不是「是不是表情包」，而是「是否商标性使用」。</b></li>
+    </ul>
+  </div>
+
+  <div class="box tip">
+    <span class="bt">✅ 排查建议</span>
+    <ul>
+      <li>标题/属性词排查：Emoji / EMOJI / 表情 / 表情包 / Emoticons 作为<b>品牌词或品类描述</b>出现即需处理。</li>
+      <li>图形排查：黄脸圆脸表情作为<b>主视觉或品牌标识</b>使用（带 Emoji 字样、成套系列化）需重点排查；纯 Unicode 公共符号无文字标注的，风险显著更低。</li>
+      <li>反向安全区：仅使用 Unicode 标准 emoji 字形、不带任何 EMOJI 文字标识、不将其作为品牌或商品名称——这类使用通常不在本案维权范围内，但仍建议做 FTO 复核。</li>
+    </ul>
+  </div>
+
+  <h4>案卷附图（可点击放大 · 滚轮缩放）</h4>
+  <div class="gallery">
+    <div class="fig"><img class="ph" src="img/case3_emoji_tm.png" alt="EMOJI 商标注册信息表" onclick="zoom(this)"><div class="cap"><b>图3-1 · 涉案商标注册清单</b>Trademark Reg. No. 与 Holder（emoji company GmbH）对照表，覆盖第9/16/25/28/41类。</div></div>
+  </div>
+  <div class="placeholder" style="margin-top:14px">
+    <span class="ico">🖼️</span>
+    <b>附图待补</b>
+    图3-1 需收到<b>无遮挡原图</b>：表头 Case / Document # / PageID 被水印压住，注册号后半段与类目说明需看清后方可逐条写入权利明细。
+  </div>
+</section>
+
+<!-- ==================== 通用风险规避 ==================== -->
+<section class="case">
+  <div class="case-head">
+    <span class="idx">SUMMARY</span>
+    <h2>本周趋势与通用风险规避规则</h2>
+    <span class="date">适用全部案件</span>
+  </div>
+
+  <h4>趋势：本周是「角色 / 作品类 IP」集中维权周</h4>
+  <table>
+    <thead><tr><th>案号</th><th>原告</th><th>律所</th><th>类型</th><th>状态</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">2:26-cv-00517</td><td>Marvel Characters, Inc.</td><td>TME</td><td>商标</td><td style="color:var(--green)">✅ 已核实</td></tr>
+      <tr><td class="mono">2026-cv-13018</td><td>BBC Studios / Bluey</td><td>GBC</td><td>商标</td><td style="color:var(--amber)">⚠️ 待核</td></tr>
+      <tr><td class="mono">2026-cv-13156</td><td>Mattel / Monster High</td><td>GBC</td><td>商标+版权</td><td style="color:var(--amber)">⚠️ 待核</td></tr>
+      <tr><td class="mono">2026-cv-13187</td><td>SOPMAD / 小王子</td><td>HSP</td><td>商标</td><td style="color:var(--amber)">⚠️ 待核</td></tr>
+      <tr><td class="mono">2026-cv-09386</td><td>emoji company GmbH</td><td>HUCKE</td><td>商标</td><td style="color:var(--amber)">⚠️ 待核</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box warn">
+    <span class="bt">💡 规律判断</span>
+    <ul>
+      <li>本周 5 案清一色为<b>角色 / 作品类 IP</b>，且原告均为 <b>IP 库型长期权利人</b>（Marvel / BBC Studios / Mattel / SOPMAD / emoji company）。</li>
+      <li>这类权利人的特征是：<b>权利数量多、类目覆盖广、系列案密集、证据准备充分</b>（如蜘蛛侠案一次提交 26 个 Exhibit）。</li>
+      <li><b>排查必须从「查关键词」升级为「查权利人全库」</b>：同一个权利人旗下往往有数十到数百件商标/版权，只查本案出现的词会严重漏判。</li>
+    </ul>
+  </div>
+
+  <h4>通用排查清单（五案通用）</h4>
+  <table>
+    <thead><tr><th>维度</th><th>动作</th><th>适用案件</th></tr></thead>
+    <tbody>
+      <tr><td>原告全库</td><td>以原告主体名为起点，检索其全部商标、版权、专利，不限于本案列出的注册号</td><td>全部</td></tr>
+      <tr><td>关键词</td><td>中英文 + 变体 + 角色名 + 法语/其他语种版本同时排查</td><td>全部</td></tr>
+      <tr><td>图像</td><td>文字、图形、剪影、Q版、同人风格分层比对，不只看主图</td><td>1 / 2 / 4 / 5</td></tr>
+      <tr><td>商品类目</td><td>核对 9/16/21/25/28 类（及其他涉案类）是否覆盖自家商品</td><td>全部</td></tr>
+      <tr><td>标题与属性</td><td>标题、变体名、属性词、详情页 Banner 全部纳入排查范围</td><td>全部</td></tr>
+      <tr><td>原告 vs 注册人</td><td>区分商标持有人与实际维权主体，两者可能不同</td><td>5</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box tip">
+    <span class="bt">✅ 行动建议</span>
+    <ul>
+      <li>建立<b>权利人-权利清单</b>台账，按原告主体归档，定期更新（建议每周）。</li>
+      <li>对高风险类目商品做<b>上架前 FTO 筛查</b>：权利人全库检索 + 图像比对 + 关键词扫描。</li>
+      <li>收到 TRO 后第一时间：<b>冻结相关账户资金、下架涉案链接、保全证据、联系美国本地律师</b>——不要自行与原告或律所沟通。</li>
+      <li>本指南为风险预警，<b>不构成法律意见</b>；具体案件以代理律师意见为准。</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  IP RISK MONITOR · OCTOBER 2026 · 近期美国 TRO 案件维权分析与风险规避指南<br>
+  案件信息以法院案卷原文为准 · 本指南仅作风险预警参考，不构成法律意见 · 五案均无专利，未附谷歌专利链接
+</footer>
+
+</div>
+
+<!-- ============ 灯箱 ============ -->
+<div id="lb-bar" style="display:none">
+  <button onclick="lbZoom(0.5)">缩小</button>
+  <button onclick="lbZoom(2)">放大</button>
+  <button onclick="lbFit()">自适应</button>
+  <button onclick="lbReset()">100%</button>
+  <span class="sp" id="lb-cap"></span>
+  <button id="lb-close" onclick="lbClose()">✕ 关闭</button>
+</div>
+<div id="lightbox" onclick="lbClose()">
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
+<script>
+var lb = document.getElementById('lightbox');
+var lbImg = document.getElementById('lb-img');
+var lbBar = document.getElementById('lb-bar');
+var scale = 1;
+
+function zoom(el){
+  lbImg.src = el.src;
+  lbImg.alt = el.alt;
+  document.getElementById('lb-cap').textContent = el.alt || '';
+  scale = 1;
+  lbImg.style.transform = 'scale(1)';
+  lb.style.display = 'flex';
+  lbBar.style.display = 'flex';
+  lbImg.style.cursor = 'zoom-in';
+}
+function lbClose(){
+  lb.style.display = 'none';
+  lbBar.style.display = 'none';
+}
+function lbZoom(f){
+  scale = Math.min(8, Math.max(0.5, scale * f));
+  lbImg.style.transform = 'scale(' + scale + ')';
+  lbImg.style.cursor = scale >= 8 ? 'zoom-out' : 'zoom-in';
+}
+function lbReset(){ scale = 1; lbImg.style.transform = 'scale(1)'; lbImg.style.cursor = 'zoom-in'; }
+function lbFit(){ scale = 1; lbImg.style.transform = 'scale(1)'; }
+
+lbImg.addEventListener('wheel', function(e){
+  if(lb.style.display !== 'flex') return;
+  e.preventDefault();
+  lbZoom(e.deltaY < 0 ? 1.12 : 1/1.12);
+}, {passive:false});
+
+document.addEventListener('keydown', function(e){
+  if(lb.style.display !== 'flex') return;
+  if(e.key === 'Escape') lbClose();
+  if(e.key === '+' || e.key === '=') lbZoom(1.25);
+  if(e.key === '-') lbZoom(1/1.25);
+  if(e.key === '0') lbReset();
+});
+
+function go(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+</script>
+</body>
+</html>
